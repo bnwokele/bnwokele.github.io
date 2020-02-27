@@ -1,0 +1,28 @@
+.header-container {
+    background: darksalmon;
+    color: floralwhite;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.content-container {
+    flex-direction: row;
+    align-items: center;
+    width: 960px;    
+}
+
+.intro {
+    order: 1;
+}
+
+
+
+
