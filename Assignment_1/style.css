@@ -25,7 +25,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     align-items: flex-start;
-    max-width: 960px; 
+    max-width: 960px;
     margin-top: 15px;
     
 }
@@ -34,6 +34,7 @@
 .intro {
     display: flex;
     flex: 1;
+    flex-direction: column;
 }
 
 .intro img{
@@ -44,10 +45,15 @@
 
 .intro p{
     background-color: white;
+    margin: 10px;
+    padding: 10px;
  }
 
 .mainroles {
     display: flex;
     flex: 2;
     background-color: white;
+    padding: 25px;
+    margin-bottom: 50px;
+    margin-left: 20px;
 }
