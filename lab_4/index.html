@@ -30,11 +30,12 @@
         content.innerHTML = "Hello world";
 
         let myName = "Benjamin Nwokeleme";
+        let myNameLength = myName.length;
         let subName = myName.split(" ");
-
         let totalNum = subName[0].length + subName[1].length;
 
-        let myNameLength = myName.length;
+        let firstName = "Benjamin"
+        let lastName = "Nwokeleme"
         let thirdChar = firstName[2].toUpperCase();
         let lastThreeChar = lastName.slice(-3);
 
@@ -44,7 +45,7 @@
         let node1 = document.createElement("p");
         node1.className = "first-para";
         content.appendChild(node1);
-        node1.innerHTML = "My name has " + fullNameLength + " characters.";
+        node1.innerHTML = "My name has " + myNameLength + " characters.";
 
         let node2 = document.createElement("p");
         node2.className = "second-para";
