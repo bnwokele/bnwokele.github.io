@@ -2,14 +2,72 @@
 <html lang="en">
   <head>
     <title>Forms Lab</title>
+    <link rel="stylesheet" text="text/css" href="form_styles.css">
   </head>
   <body>
     <div class="wrapper">
       <div class="container">
-        <div>
+        <div class="main-form-contents">
           <h1>HTML 1 Forms Lab</h1>
+          
         </div>
       </div>
     </div>
+    <script>
+
+      const pageHeader = document.querySelector("h1");
+      pageHeader.innerHTML = "HTML Forms Lab";
+
+      const mainForm = document.querySelector('.main-form-contents');
+
+      let form = document.createElement('form');
+      form.setAttribute("action", "https://nameless-thicket-21836.herokuapp.com/lab");
+      form.setAttribute("method", 'POST');
+      mainForm.appendChild(form);
+
+      let formStructure = document.createElement('ul');
+      form.appendChild(formStructure);
+
+      let li1 =  document.createElement('li');
+      let formNameLabel = document.createElement('label');
+      formNameLabel.setAttribute("for", "Name");
+      formNameLabel.innerHTML = "Name";
+      li1.appendChild(formNameLabel);
+      formStructure.appendChild(li1);
+
+      let li2 = document.createElement('li');
+      let formNameInput =  document.createElement('input');
+      formNameInput.setAttribute("id", "Name");
+      formNameInput.setAttribute("type", "text");
+      li2.appendChild(formNameInput);
+      formStructure.appendChild(li2);
+
+      let li3 = document.createElement('li');
+      let formInterestsLabel = document.createElement('label');
+      formInterestsLabel.setAttribute("for", "Interests");
+      formInterestsLabel.innerHTML = "Interests";
+      li3.appendChild(formInterestsLabel);
+      formStructure.appendChild(li3);
+      
+      let li4 = document.createElement('li');
+      let formInterestsInput =  document.createElement('textarea');
+      formInterestsInput.setAttribute("name", "userInterests");
+      formInterestsInput.setAttribute("id", "Interests");
+      formInterestsInput.setAttribute("cols", "33");
+      formInterestsInput.setAttribute("rows", "5");
+      formInterestsInput.setAttribute("placeholder", "Tell us some of your interest!");
+      li4.appendChild(formInterestsInput);
+      formStructure.appendChild(li4);
+
+      let li5 =  document.createElement('li');
+      let button = document.createElement('button');
+      button.className = "submit";
+      button.setAttribute("name", "submitted")
+      button.innerHTML = "Submit";
+      li5.appendChild(button);
+      formStructure.appendChild(li5);
+
+    </script>
+
   </body>
 </html>
