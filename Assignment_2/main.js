@@ -8,10 +8,10 @@ const overlay = document.querySelector('.overlay');
 let lineBreak = document.createElement('br');
 thumbBar.appendChild(lineBreak);
 
+let placeholder = document.createElement('p');
+thumbBar.appendChild(placeholder);
+
 for (let i = 1; i <= 5; i++) {
-    // let placeholder = document.createElement('p');
-    // placeholder.innerHTML = 'Pic ' + i;
-    // thumbBar.appendChild(placeholder);
 
     const newImage = document.createElement('img');
     let srcAttribute = 'images/pic' + i + '.jpg';
@@ -21,6 +21,7 @@ for (let i = 1; i <= 5; i++) {
     newImage.onclick = function () {
         let newSrcAttribute = newImage.getAttribute('src');
         displayedImage.setAttribute('src', newSrcAttribute);
+        placeholder.innerHTML = 'Pic #' + i;
     }
 }
 
