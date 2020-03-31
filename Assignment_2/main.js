@@ -5,11 +5,10 @@ const btn = document.querySelector('button');
 const overlay = document.querySelector('.overlay');
 
 /* Looping through images */
-let lineBreak = document.createElement('br');
-thumbBar.appendChild(lineBreak);
-
 let placeholder = document.createElement('p');
+placeholder.innerHTML = 'Pic #1';
 thumbBar.appendChild(placeholder);
+
 
 for (let i = 1; i <= 5; i++) {
 
@@ -30,7 +29,7 @@ btn.onclick = function () {
     let className = btn.getAttribute('class');
     if (className == 'dark') {
         btn.setAttribute('class', 'light');
-        btn.innerHTML = 'lighten';
+        btn.innerHTML = 'Lighten';
         overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
     }
     else {
