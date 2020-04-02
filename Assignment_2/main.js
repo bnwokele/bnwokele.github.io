@@ -20,7 +20,7 @@ for (let i = 1; i <= 5; i++) {
     newImage.onclick = function () {
         let newSrcAttribute = newImage.getAttribute('src');
         displayedImage.setAttribute('src', newSrcAttribute);
-        placeholder.innerHTML = 'Pic #' + i;
+        placeholder1.innerHTML = 'Pic #' + i;
     }
 }
 
