@@ -5,9 +5,9 @@ const btn = document.querySelector('button');
 const overlay = document.querySelector('.overlay');
 
 /* Looping through images */
-let placeholder = document.createElement('p');
+let placeholder1 = document.createElement('p');
 placeholder.innerHTML = 'Pic #1';
-thumbBar.appendChild(placeholder);
+thumbBar.appendChild(placeholder1);
 
 
 for (let i = 1; i <= 5; i++) {
