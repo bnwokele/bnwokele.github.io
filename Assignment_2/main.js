@@ -6,7 +6,7 @@ const overlay = document.querySelector('.overlay');
 
 /* Looping through images */
 let placeholder1 = document.createElement('p');
-placeholder.innerHTML = 'Pic #1';
+placeholder1.innerHTML = 'Pic #1';
 thumbBar.appendChild(placeholder1);
 
 
