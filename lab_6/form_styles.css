@@ -1,14 +1,43 @@
+.main-form-contents {
+    background-color:#F5F5F5;
+    text-align: justify;
+    height: 400px;
+    width: 550px;
+    margin: 0px auto;
+    font-size: 10px;
+}
 
-form {
+h1 {
+    margin:  0px 30% 30px 30%;
+    padding-top: 25px;
+    font-size: 2.5em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
     
 }
 
 label {
-
+    margin: 10px 30%;
+    font-size: 1.5em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 
 input, textarea {
+    margin: 10px 30%;
+    font-family: Arial, Helvetica, sans-serif;
     
+}
+
+button {
+    margin: 0px 30%;
+    padding: 10px 15px 10px 15px;
+    background-color: #ffc04c;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.25em;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 ul {
