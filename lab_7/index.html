@@ -53,18 +53,36 @@
       let marker = L.marker([38.9935762, -76.9452331]).addTo(map);
       marker.bindPopup("<strong>Eppley Recreation Center</strong>").openPopup();
 
-      let data = fetch(
-        "https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json"
-      )
-        .then(function(resp) {
-          return resp.json();
-        });
+      let requestUrl =
+        "https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json";
+      let request = new XMLHttpRequest();
+      request.open("GET", requestUrl);
 
-      let newArray = [];
-      data.array.forEach(element => {
-        
-      });
-      console.log(data[0].geocoded_column_1.coordinates);
+      request.responseType = "json";
+      request.send();
+
+      let newArray = new Array();
+      request.onload = function() {
+        const data = request.response;
+
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].hasOwnProperty("geocoded_column_1"))
+            newArray.push(data[i].geocoded_column_1.coordinates);
+          else continue;
+        }
+
+        for (let i = 0; i < 3; i++) {
+          let randomNum = Math.floor(Math.random() * newArray.length);
+          let lon = newArray[randomNum][0];
+          let lat = newArray[randomNum][1];
+
+          L.marker([lat, lon]).addTo(map);
+        }
+      };
+
+      let footer = document.querySelector(".footer");
+      footer.innerHTML =
+        "Make some markers work!<br>Zoom out to view additional markers!";
     </script>
   </body>
 </html>
