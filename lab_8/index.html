@@ -23,8 +23,27 @@
       })
       .then((data) => data.json()) // this is an "implicit return" - we're returning the results of the Fetch request to the next step.
         .then((data) => { // this is an explicit return. If I want my information to go further, I'll need to use the "return" keyword before the brackets close
-          console.log(data);
+          console.log(data)
+          return data;
           // return data; // <- this will pass the data to the next "then" statement when I'm ready.
+        })
+        .then((data) => {
+          const newdtpt = [];
+          const newObject = {};
+          for (let i = 0; i < data.length; i++) {
+            if (data[i].hasOwnProperty("category"))
+              newdtpt.push(data[i].category);
+              // if (newObject.hasOwnProperty(data[i].category)) 
+              //   newObject[data[i].category] += 1
+              // else 
+              //   newObject[data[i].category] = 1
+            else continue;
+          }
+          const distinct = (value, index, self) => {
+            return self.indexOf(value) === index;
+          }
+          const distinctPoints = newdtpt.filter(distinct)
+          console.log(distinctPoints)
         })
     </script>
   </body>
