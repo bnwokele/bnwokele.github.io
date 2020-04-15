@@ -9,7 +9,7 @@
     <div class="container">
       <div class="wrapper">
         <div class="header">Frontend Libraries: Charts Lab</div>
-        <div class="content">
+        <div id="content">
           When your lab is done, this should be replaced with a useful chart full of food data.
         </div>
         <div class="footer">Let's eat out in the future!</div>
@@ -29,22 +29,64 @@
         })
         .then((data) => {
           const newdtpt = [];
-          const newObject = {};
+          const uniqueCategory = [];
+          
           for (let i = 0; i < data.length; i++) {
             if (data[i].hasOwnProperty("category"))
-              newdtpt.push(data[i].category);
-              // if (newObject.hasOwnProperty(data[i].category)) 
-              //   newObject[data[i].category] += 1
-              // else 
-              //   newObject[data[i].category] = 1
+              uniqueCategory.push(data[i].category);
             else continue;
           }
+          // console.log(uniqueCategory)
+
           const distinct = (value, index, self) => {
             return self.indexOf(value) === index;
           }
-          const distinctPoints = newdtpt.filter(distinct)
-          console.log(distinctPoints)
+
+          const distinctPoints = uniqueCategory.filter(distinct)
+          // console.log(distinctPoints)
+
+          for (let i = 0; i < distinctPoints.length; i++) {
+            let count = 0;
+            let newObject = {};
+
+            for (let j = 0; j < data.length; j++) {
+              if (data[j].category == distinctPoints[i])
+                count += 1;
+              else
+                continue;
+            }
+            newObject['y'] = count;
+            newObject['label'] = distinctPoints[i];
+            newdtpt.push(newObject); 
+          }
+          return newdtpt;
         })
+        .then((newdtpt) => {
+          let chart = new CanvasJS.Chart("content", {
+            animationEnabled: true,
+          
+            title:{
+              text:"LET'S FIND SOMEWHERE TO EAT"
+            },
+            axisX:{
+              interval: 1
+            },
+            axisY2:{
+              interlacedColor: "rgba(1,77,101,.2)",
+              gridColor: "rgba(1,77,101,.1)",
+              title: "Number of Places to Eat"
+            },
+            data: [{
+              type: "bar",
+              name: "places to eat",
+              axisYType: "secondary",
+              color: "#014D65",
+              dataPoints: newdtpt
+            }]
+          });
+            chart.render()
+        })
+
     </script>
   </body>
 </html>

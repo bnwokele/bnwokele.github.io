@@ -65,7 +65,7 @@ h3 {
   padding: 0 25px;
 }
 
-.content {
+#content {
   background: #fff;
   border: 2px dotted #444;
   align-self: flex-start;
@@ -73,6 +73,8 @@ h3 {
   padding: 10px;
   overflow-wrap: break-word;
   margin: 25px 50px;
+  height: 500px; 
+  width: 90%;
 }
 
 .activate {

@@ -22,7 +22,7 @@ app.use(express.static('public'));
 
 
 function processDataForFrontEnd(req, res) {
-  const baseURL = ''; // Enter the URL for the data you would like to retrieve here
+  const baseURL = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json'; // Enter the URL for the data you would like to retrieve here
 
   // Your Fetch API call starts here
   // Note that at no point do you "return" anything from this function -
@@ -31,6 +31,44 @@ function processDataForFrontEnd(req, res) {
       .then((r) => r.json())
       .then((data) => {
         console.log(data);
+        return data
+      })
+      .then((data) => {
+        const newdtpt = [];
+        const uniqueCategory = [];
+        
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].hasOwnProperty("category"))
+            uniqueCategory.push(data[i].category);
+          else continue;
+        }
+        // console.log(uniqueCategory)
+
+        const distinct = (value, index, self) => {
+          return self.indexOf(value) === index;
+        }
+
+        const distinctPoints = uniqueCategory.filter(distinct)
+        // console.log(distinctPoints)
+
+        for (let i = 0; i < distinctPoints.length; i++) {
+          let count = 0;
+          let newObject = {};
+
+          for (let j = 0; j < data.length; j++) {
+            if (data[j].category == distinctPoints[i])
+              count += 1;
+            else
+              continue;
+          }
+          newObject['y'] = count;
+          newObject['label'] = distinctPoints[i];
+          newdtpt.push(newObject); 
+        }
+        return newdtpt;
+      })
+      .then((data) => {
+        console.log(data)
         res.send({ data: data }); // here's where we return data to the front end
       })
       .catch((err) => {
