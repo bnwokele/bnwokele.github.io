@@ -30,7 +30,7 @@ function processDataForFrontEnd(req, res) {
     fetch(baseURL)
       .then((r) => r.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         return data
       })
       .then((data) => {
@@ -65,6 +65,7 @@ function processDataForFrontEnd(req, res) {
           newObject['label'] = distinctPoints[i];
           newdtpt.push(newObject); 
         }
+        console.log(newdtpt)
         return newdtpt;
       })
       .then((data) => {
