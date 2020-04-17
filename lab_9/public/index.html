@@ -19,32 +19,32 @@
     fetch('/api') // Rather than fetching from PG County, we're going to fetch from our own server.
       .then(res => res.json())
       .then(res => {
-        console.log(res)
+        console.log(res);
         // Here's where your chart code should go.
         let chart = new CanvasJS.Chart("content", {
-          animationEnabled: true,
+            animationEnabled: true,
           
-          title:{
-            text:"LET'S FIND SOMEWHERE TO EAT"
-          },
-          axisX:{
-            interval: 1
-          },
-          axisY2:{
-            interlacedColor: "rgba(1,77,101,.2)",
-            gridColor: "rgba(1,77,101,.1)",
-            title: "Number of Places to Eat"
-          },
-          data: [{
-            type: "bar",
-            name: "places to eat",
-            axisYType: "secondary",
-            color: "#014D65",
-            dataPoints: res
-          }]
-        });
-          chart.render()
-      })
+            title:{
+              text:"LET'S FIND SOMEWHERE TO EAT"
+            },
+            axisX:{
+              interval: 1
+            },
+            axisY2:{
+              interlacedColor: "rgba(1,77,101,.2)",
+              gridColor: "rgba(1,77,101,.1)",
+              title: "Number of Places to Eat"
+            },
+            data: [{
+              type: "bar",
+              name: "places to eat",
+              axisYType: "secondary",
+              color: "#014D65",
+              dataPoints: res.data
+            }]
+          });
+            chart.render()
+        })
   </script>
 </body>
 
