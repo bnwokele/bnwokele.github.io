@@ -33,7 +33,7 @@ h3 {
 .wrapper {
   min-height: 100%;
   display: flex;
-  width: 80%;
+  width: 100%;
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
@@ -70,16 +70,16 @@ h3 {
   background: #fff;
   border: 2px dotted #444;
   flex-grow: 2;
-  flex: 0 0 200px;
+  /* flex: 0 0 200px; */
   padding: 10px;
   overflow-wrap: break-word;
   margin: 25px 50px;
-  max-width: 450px;
+  /* max-width: 700px; */
 }
 
-#content {
+#chart-area {
   height: 500px; 
-  width: 90%;
+  width: 80%;
 
 }
 
