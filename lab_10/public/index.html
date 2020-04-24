@@ -14,6 +14,8 @@
           <form class="targetForm" id="labForm">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" />
+            <label for="zipcode">Zip Code</label>
+            <input type="text" id="zipcode" name="zipcode" />
             <label for="interests">Interests</label>
             <textarea id="interests" name="interests" rows="5" cols="33">
                 Default text says what?
@@ -28,29 +30,57 @@
       function sendForm(e) {
         e.preventDefault(); // this prevents your page reloading on button click
         const target = document.querySelector("#labForm");
-        const btn = document.querySelector("#formBtn");
+        // const btn = document.querySelector("#formBtn");
 
         const formToSend = new FormData(target);
 
         fetch("/api", {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(Object.fromEntries(formToSend)),
         })
-          .then((data) => data.text()) // note: we didn't send JSON, so there's no JSON to get.
-          .then((txtresponse) => {
-            console.log(txtresponse);
-            btn.setAttribute("disabled", true);
+          .then((data) => data.json()) // note: we didn't send JSON, so there's no JSON to get.
+          .then((jsonresponse) => {
+            console.log(jsonresponse.response);
+            // btn.setAttribute("disabled", true);
             const br = document.createElement("br");
             target.append(br);
-            target.append(`${txtresponse}`);
+            target.append(`${jsonresponse.response}`);
           });
       }
 
       const formBtn = document.querySelector("#formBtn");
       formBtn.addEventListener("click", sendForm);
+
+      function getRecords(e) {
+        e.preventDefault(); // this prevents your page reloading on button click
+        const target = document.querySelector("#labForm");
+
+        fetch("/api")
+          .then((data) => data.json())
+          .then((result) => {
+            console.log(result);
+            const br = document.createElement("br");
+            const orderedList = document.createElement("ol");
+            target.append(br);
+            target.append(orderedList);
+            result.map(name => {
+              let record = document.createElement("li");
+              record.innerHTML = name.name;
+              orderedList.append(record)
+            });
+          });
+      }
+
+      const labForm = document.querySelector("#labForm");
+      const btn = document.createElement("button");
+
+      btn.innerHTML = 'Database Records';
+      labForm.append(btn);
+      btn.addEventListener("click", getRecords);
+
     </script>
   </body>
 </html>
