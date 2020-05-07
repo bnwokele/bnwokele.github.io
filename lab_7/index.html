@@ -70,6 +70,7 @@
             newArray.push(data[i].geocoded_column_1.coordinates);
           else continue;
         }
+        // console.log(newArray)
 
         for (let i = 0; i < 3; i++) {
           let randomNum = Math.floor(Math.random() * newArray.length);
@@ -83,6 +84,8 @@
       let footer = document.querySelector(".footer");
       footer.innerHTML =
         "Make some markers work!<br>Zoom out to view additional markers!";
+
+      
     </script>
   </body>
 </html>
